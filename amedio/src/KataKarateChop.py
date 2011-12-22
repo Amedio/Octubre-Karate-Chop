@@ -15,9 +15,21 @@ class KarateChopper(object):
             if listToChop[halfPart] == number:
                 return halfPart
             else:
-                if listToChop[halfPart - 1] == number:
-                    return (halfPart - 1)
+                if listToChop[halfPart] < number:
+                    leftListToChop = self.getList(listToChop, 0, halfPart)
+                    return self.chop(number, leftListToChop)
+                if listToChop[halfPart] > number:
+                    rightListToChop = self.getList(listToChop, halfPart + 1, len(listToChop))
+                    return self.chop(number, rightListToChop)
         return -1
+    
+    def getList(self, list, initial, finish):
+        result = []
+        
+        for i in range(initial, finish):
+            result.append(list[i])
+            
+        return result;
 
     def __init__(self):
         '''

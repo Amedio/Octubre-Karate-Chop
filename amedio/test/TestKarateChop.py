@@ -36,6 +36,21 @@ class Test(unittest.TestCase):
         actual = chopper.chop(3, [1, 3])
         expected = 1
         self.assertEquals(actual, expected, "Not correctly chopped. {0} != {1}".format(actual, expected))
+        
+    def testThreeElementsGivesOkWithExistingNumber(self):
+        chopper = KarateChopper()
+        actual = chopper.chop(1, [1, 3, 5])
+        expected = 0
+        self.assertEquals(actual, expected, "Not correctly chopped. {0} != {1}".format(actual, expected))
+
+        actual = chopper.chop(3, [1, 3, 5])
+        expected = 1
+        self.assertEquals(actual, expected, "Not correctly chopped. {0} != {1}".format(actual, expected))
+        
+        actual = chopper.chop(5, [1, 3, 5])
+        expected = 2
+        self.assertEquals(actual, expected, "Not correctly chopped. {0} != {1}".format(actual, expected))
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testNoElementsGivesError']
