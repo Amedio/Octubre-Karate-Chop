@@ -11,8 +11,12 @@ class KarateChopper(object):
 
     def chop(self, number, listToChop):
         if len(listToChop) > 0:
-            if listToChop[0] == number:
-                return 0
+            halfPart = len(listToChop) / 2
+            if listToChop[halfPart] == number:
+                return halfPart
+            else:
+                if listToChop[halfPart - 1] == number:
+                    return (halfPart - 1)
         return -1
 
     def __init__(self):
